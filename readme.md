@@ -1,5 +1,6 @@
 Alexander Straub 
 
+
 Requirements (in cargo.toml):
 ```
 bincode = "1.2.1"
@@ -29,12 +30,18 @@ let bitvecwrap = Bvec{
     bitvec:bv
 };
 //Creating Rankvec Structure
-let rankbitvec = Rankvec{
+let mut rankbitvec = Rankvec{
     sbvec:bitvecwrap,
     data: Some(rankbitvecdata)
 };
 //Performing rank operation
 rankbitvec.rank1(7);
+//Getting memory overhead of Rank Data
+rankbitvec.overhead();
+//Saving Rankvec structure to file 
+rankbitvec.save("RankVec.out");
+//Loading Rankvec structure from file;
+rankbitvec.load("RankVec.out");
 ```
 
 2) Selectvec
@@ -46,14 +53,17 @@ The code below assumes an already created Bit Vector and Rankvec structure (repr
 
 ```
 //Creating Selectvec Structure
-let selectbitvec =  Selectvec{
+let mut selectbitvec =  Selectvec{
     rankvec : rankbitvec
 };
 //Performing select1 operation
 selectbitvec.select1(1);
-
-//Performing rank1 operation through Selectvec
-selectbitvec.rankvec.rank1(25);
+//Getting memory overhead of Selectvec
+selectbitvec.overhead();
+//Saving Selectvec Structure to file
+selectbitvec.save("SelectVec.out");
+//Loading Selectvec Structure from file
+selectbitvec.load("SelectVec.out");
 ```
 
 3) Sparsevec
@@ -62,6 +72,9 @@ The Sparsevec structure allows for representation of strings using a BitVector. 
 Use:
 
 ```
+//Defining size of the sparse vector
+let size = 10;
+
 //Creating an empty sparse vector 
 let mut sparsevec = Sparsevec::create(size);
 
@@ -76,8 +89,23 @@ sparsevec.get_index_of(2);
 let mut elem= "".to_string();
 sparsevec.get_at_rank(2, &mut elem);
 // elem now obtains a reference to sparsevec rank 2 string
-
+//Getting the total number of elements in the bitvector
 sparsevec.num_elem();
+//Getting number of elements up to index 5 inclusive
+sparsevec.num_elem_at(5);
+
+let mut elem= "".to_string();
+//Getting string representation of the Sparse Vec at index 3
+sparsevec.get_at_index(3, &mut elem);
+// elem now obtains a reference to sparsevec index 3 string
+
+//Saving Sparsevec to file
+sparsevec.save("Sparsevec.out".to_string());
+//Loading Sparsevec from file
+sparsevec.load("Sparsevec.out".to_string());
+
+//Getting the size of the sparse vector
+sparsevec.size();
 ```
 
 Sources:
@@ -86,6 +114,24 @@ serde: https://serde.rs/derive.html
 get_size: https://crates.io/crates/get-size
 rand: https://crates.io/crates/rand
 bincode: https://docs.rs/bincode/latest/bincode/
+
+
+
+
+
+
+
+Sources:
+bit-vec: https://crates.io/crates/bit-vec
+serde: https://serde.rs/derive.html
+get_size: https://crates.io/crates/get-size
+rand: https://crates.io/crates/rand
+bincode: https://docs.rs/bincode/latest/bincode/
+
+
+
+
+
 
 
 
