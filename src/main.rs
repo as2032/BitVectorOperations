@@ -341,27 +341,39 @@ fn main() {
             }
         }
     }
-    
     //Creating data for constant time rank operation
-    let rankbitvecdata = generate_rank_ds(bv.clone());
-    //Creating wrapper for the Bit Vector
-    let bitvecwrap = Bvec{
-        bitvec:bv
-    };
+     let rankbitvecdata = generate_rank_ds(bv.clone());
+     //Creating wrapper for the Bit Vector
+     let bitvecwrap = Bvec{
+         bitvec:bv
+     };
     //Creating Rankvec Structure
-    let rankbitvec = Rankvec{
+    let mut rankbitvec = Rankvec{
         sbvec:bitvecwrap,
         data: Some(rankbitvecdata)
     };
     //Performing rank operation
     rankbitvec.rank1(7);
+    //Getting memory overhead of Rank Data
+    rankbitvec.overhead();
+    //Saving Rankvec structure to file 
+    rankbitvec.save("RankVec.out");
+    //Loading Rankvec structure from file;
+    rankbitvec.load("RankVec.out");
+
 
     //Creating Selectvec Structure
-    let selectbitvec =  Selectvec{
+    let mut selectbitvec =  Selectvec{
         rankvec : rankbitvec
     };
     //Performing select1 operation
     selectbitvec.select1(1);
+    //Getting memory overhead of Selectvec
+    selectbitvec.overhead();
+    //Saving Selectvec Structure to file
+    selectbitvec.save("SelectVec.out");
+    //Loading Selectvec Structure from file
+    selectbitvec.load("SelectVec.out");
 
     //Defining size of the sparse vector
     let size = 10;
@@ -380,7 +392,24 @@ fn main() {
     let mut elem= "".to_string();
     sparsevec.get_at_rank(2, &mut elem);
     // elem now obtains a reference to sparsevec rank 2 string
+    //Getting the total number of elements in the bitvector
     sparsevec.num_elem();
+    //Getting number of elements up to index 5 inclusive
+    sparsevec.num_elem_at(5);
+    
+    let mut elem= "".to_string();
+    //Getting string representation of the Sparse Vec at index 3
+    sparsevec.get_at_index(3, &mut elem);
+    // elem now obtains a reference to sparsevec index 3 string
+    
+    //Saving Sparsevec to file
+    sparsevec.save("Sparsevec.out".to_string());
+    //Loading Sparsevec from file
+    sparsevec.load("Sparsevec.out".to_string());
+
+    //Getting the size of the sparse vector
+    sparsevec.size();
+    
 
 // VERBOSE TESTING OF SPARSEVEC WITH VARYING INPUT SIZE AND SPARSITY
     
