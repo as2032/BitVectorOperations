@@ -80,4 +80,14 @@ sparsevec.get_at_rank(2, &mut elem);
 sparsevec.num_elem();
 ```
 
+Sources:
+bit-vec: https://crates.io/crates/bit-vec
+serde: https://serde.rs/derive.html
+get_size: https://crates.io/crates/get-size
+rand: https://crates.io/crates/rand
+bincode: https://docs.rs/bincode/latest/bincode/
+
+
+
+
 
