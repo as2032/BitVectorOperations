@@ -1,7 +1,3 @@
-// extern crate bitvector;
-// use bitvector::*;
-// extern crate bv;
-// use bv::BitVec;
 use std::sync::Arc;
 use get_size::GetSize;
 use rand::Rng;
