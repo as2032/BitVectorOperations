@@ -1,12 +1,12 @@
 Alexander Straub 
 
 Requirements (in cargo.toml):
-'''
+```
 bincode = "1.2.1"
 bit-vec = { version = "0.6", features = ["serde"] }
 serde = { version = "1.0", features = ["derive"] }
 get-size = { version = "^0.1", features = ["derive"] }
-''' 
+``` 
 
 
 Basic input for Rank and Select operations.
@@ -21,7 +21,7 @@ The Rankvec structure allows for constant time rank1 operations on the supplied 
 
 Use:
 The code below assumes an already created Bit Vector (represented as bv here) of type BitVec from the bit-vec library. Interface for this structure is done in the main() function in main.rs
-'''
+```
 //Creating data for constant time rank operation
 let rankbitvecdata = generate_rank_ds(bv.clone());
 //Creating wrapper for the Bit Vector
@@ -35,7 +35,7 @@ let rankbitvec = Rankvec{
 };
 //Performing rank operation
 rankbitvec.rank1(7);
-'''
+```
 
 2) Selectvec
 
@@ -44,7 +44,7 @@ The Selectvec structure allows for logrithmic time select1 operations on the sup
 Use: 
 The code below assumes an already created Bit Vector and Rankvec structure (represented as rankbitvec here). Interface for this structure is done in the main() function in main.rs
 
-'''
+```
 //Creating Selectvec Structure
 let selectbitvec =  Selectvec{
     rankvec : rankbitvec
@@ -54,14 +54,14 @@ selectbitvec.select1(1);
 
 //Performing rank1 operation through Selectvec
 selectbitvec.rankvec.rank1(25);
-'''
+```
 
 3) Sparsevec
 The Sparsevec structure allows for representation of strings using a BitVector. Unlike Rankvec and Selectvec, this structure does not rely on an already created bit vector, or input file, rather creates it itself. This structure also implements supporting operations on the sparse vector.
 
 Use:
 
-'''
+```
 //Creating an empty sparse vector 
 let mut sparsevec = Sparsevec::create(size);
 
@@ -78,6 +78,6 @@ sparsevec.get_at_rank(2, &mut elem);
 // elem now obtains a reference to sparsevec rank 2 string
 
 sparsevec.num_elem();
-'''
+```
 
 
