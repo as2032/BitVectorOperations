@@ -716,52 +716,6 @@ fn main() {
     // vec1.num_elem_at(280);
     // let durnea = curnea.elapsed();
     // dbg!(durfinalize, durgar, durgio, durnea);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // vec1.append("yo".to_string(), 3);
-    // vec1.append("yo2".to_string(), 1);
-    // vec1.finalize();
-    // dbg!(vec1.sparsevec.clone());
-    // dbg!(vec1.get_at_rank(1, &mut s1));
-    // dbg!(s1);
-    // dbg!(vec1.num_elem());
-    // // let b1 = vec1.get_at_index(1, &mut "".to_string());
-    // dbg!(vec1.get_index_of(2));
-
-
-    
-
-
-
-
-    println!("Hello, world!");
-
 }
 
 
