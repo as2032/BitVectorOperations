@@ -10,27 +10,13 @@ bit-vec = { version = "0.6", features = ["serde"] }
 serde = { version = "1.0", features = ["derive"] }
 get-size = { version = "^0.1", features = ["derive"] }
 ```
-##Introduction
+## Introduction
 This library provides operations for working with Bit Vectors, including Rank and Select operations. The command-line interface optionally accepts an input file name, which should be stored in the input_files/ directory. The input file must contain a sequence of 0's and 1's only. Example input can be found in input_files/inputexample
 
-
-
-Requirements (in cargo.toml):
-```
-bincode = "1.2.1"
-bit-vec = { version = "0.6", features = ["serde"] }
-serde = { version = "1.0", features = ["derive"] }
-get-size = { version = "^0.1", features = ["derive"] }
-``` 
-
-
-Basic input for Rank and Select operations.
-The command line optionally takes 1 argument, an input file name. This file needs to be stored in the input_files/ directory. This input file must contain a sequence of 0's and 1's only. An example is found in input_files/inputexample. This input file is needed to be able to use Rankvec or Selectvec
-
-
+## Library Operations
 This library consists of operations supporting Bit Vectors.
 
-1) Rankvec
+### Rankvec
 
 The Rankvec structure allows for constant time rank1 operations on the supplied bit vector.
 
@@ -58,11 +44,11 @@ rankbitvec.save("RankVec.out");
 rankbitvec.load("RankVec.out");
 ```
 
-2) Selectvec
+### Selectvec
 
 The Selectvec structure allows for logrithmic time select1 operations on the supplied bit vector.
 
-Use: 
+#### Use: 
 The code below assumes an already created Bit Vector and Rankvec structure (represented as rankbitvec here). Interface for this structure is done in the main() function in main.rs
 
 ```
@@ -80,10 +66,10 @@ selectbitvec.save("SelectVec.out");
 selectbitvec.load("SelectVec.out");
 ```
 
-3) Sparsevec
+### Sparsevec
 The Sparsevec structure allows for representation of strings using a BitVector. Unlike Rankvec and Selectvec, this structure does not rely on an already created bit vector, or input file, rather creates it itself. This structure also implements supporting operations on the sparse vector.
 
-Use:
+#### Use:
 
 ```
 //Defining size of the sparse vector
@@ -122,7 +108,7 @@ sparsevec.load("Sparsevec.out".to_string());
 sparsevec.size();
 ```
 
-Sources:
+## Sources:
 bit-vec: https://crates.io/crates/bit-vec
 serde: https://serde.rs/derive.html
 get_size: https://crates.io/crates/get-size
