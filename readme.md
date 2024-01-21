@@ -147,7 +147,9 @@ sparsevec.load("Sparsevec.out".to_string());
 ```
 
 Getting the size of the sparse vector
-```sparsevec.size();```
+```
+sparsevec.size();
+```
 
 
 ## Sources:
