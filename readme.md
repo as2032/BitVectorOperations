@@ -61,18 +61,27 @@ The Selectvec structure allows for logrithmic time select1 operations on the sup
 The code below assumes an already created Bit Vector and Rankvec structure (represented as rankbitvec here). Interface for this structure is done in the main() function in main.rs
 
 Creating Selectvec Structure
-```let mut selectbitvec =  Selectvec{
+```
+let mut selectbitvec =  Selectvec{
     rankvec : rankbitvec
 };
 ```
 Performing select1 operation
-```selectbitvec.select1(1);```
+```
+selectbitvec.select1(1);
+```
 Getting memory overhead of Selectvec
-```selectbitvec.overhead();```
+```
+selectbitvec.overhead();
+```
 Saving Selectvec Structure to file
-```selectbitvec.save("SelectVec.out");```
+```
+selectbitvec.save("SelectVec.out");
+```
 Loading Selectvec Structure from file
-```selectbitvec.load("SelectVec.out");```
+```
+selectbitvec.load("SelectVec.out");
+```
 
 
 ### Sparsevec
