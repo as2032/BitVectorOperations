@@ -16,32 +16,42 @@ This library provides operations for working with Bit Vectors, including Rank an
 This library consists of operations supporting Bit Vectors.
 
 ### Rankvec
-
+ 
 The Rankvec structure allows for constant time rank1 operations on the supplied bit vector.
 
-Use:
+#### Use:
 The code below assumes an already created Bit Vector (represented as bv here) of type BitVec from the bit-vec library. Interface for this structure is done in the main() function in main.rs
+
+Creating data for constant time rank operation
 ```
-//Creating data for constant time rank operation
 let rankbitvecdata = generate_rank_ds(bv.clone());
-//Creating wrapper for the Bit Vector
+```
+Creating wrapper for the Bit Vector
+```
 let bitvecwrap = Bvec{
     bitvec:bv
 };
-//Creating Rankvec Structure
+```
+Creating Rankvec Structure
+```
 let mut rankbitvec = Rankvec{
     sbvec:bitvecwrap,
     data: Some(rankbitvecdata)
 };
-//Performing rank operation
-rankbitvec.rank1(7);
-//Getting memory overhead of Rank Data
-rankbitvec.overhead();
-//Saving Rankvec structure to file 
-rankbitvec.save("RankVec.out");
-//Loading Rankvec structure from file;
-rankbitvec.load("RankVec.out");
 ```
+Performing rank operation
+```
+rankbitvec.rank1(7);
+```
+Getting memory overhead of Rank Data
+```
+rankbitvec.overhead();
+```
+Saving Rankvec structure to file 
+```rankbitvec.save("RankVec.out");```
+Loading Rankvec structure from file;
+```rankbitvec.load("RankVec.out");```
+
 
 ### Selectvec
 
@@ -50,62 +60,61 @@ The Selectvec structure allows for logrithmic time select1 operations on the sup
 #### Use: 
 The code below assumes an already created Bit Vector and Rankvec structure (represented as rankbitvec here). Interface for this structure is done in the main() function in main.rs
 
-```
-//Creating Selectvec Structure
-let mut selectbitvec =  Selectvec{
+
+Creating Selectvec Structure
+```let mut selectbitvec =  Selectvec{
     rankvec : rankbitvec
-};
-//Performing select1 operation
-selectbitvec.select1(1);
-//Getting memory overhead of Selectvec
-selectbitvec.overhead();
-//Saving Selectvec Structure to file
-selectbitvec.save("SelectVec.out");
-//Loading Selectvec Structure from file
-selectbitvec.load("SelectVec.out");
-```
+};```
+Performing select1 operation
+```selectbitvec.select1(1);```
+Getting memory overhead of Selectvec
+```selectbitvec.overhead();```
+Saving Selectvec Structure to file
+```selectbitvec.save("SelectVec.out");```
+Loading Selectvec Structure from file
+```selectbitvec.load("SelectVec.out");```
+
 
 ### Sparsevec
 The Sparsevec structure allows for representation of strings using a BitVector. Unlike Rankvec and Selectvec, this structure does not rely on an already created bit vector, or input file, rather creates it itself. This structure also implements supporting operations on the sparse vector.
 
 #### Use:
 
-```
-//Defining size of the sparse vector
-let size = 10;
 
-//Creating an empty sparse vector 
-let mut sparsevec = Sparsevec::create(size);
+Defining size of the sparse vector
+```let size = 10;```
 
-//Adding elements to sparse vector at various positions
-sparsevec.append("Rob".to_string(), 1);
+Creating an empty sparse vector 
+```let mut sparsevec = Sparsevec::create(size);```
+
+Adding elements to sparse vector at various positions
+```sparsevec.append("Rob".to_string(), 1);
 sparsevec.append("Rob2".to_string(), 2);
-sparsevec.append("Rob3".to_string(), 3);
-//Finalizing the vector so that we can perform operations on it
-sparsevec.finalize();
-//Performing various operations on the sparsevec
-sparsevec.get_index_of(2);
+sparsevec.append("Rob3".to_string(), 3);```
+Finalizing the vector so that we can perform operations on it
+```sparsevec.finalize();```
+Performing various operations on the sparsevec
+```sparsevec.get_index_of(2);
 let mut elem= "".to_string();
-sparsevec.get_at_rank(2, &mut elem);
-// elem now obtains a reference to sparsevec rank 2 string
-//Getting the total number of elements in the bitvector
-sparsevec.num_elem();
-//Getting number of elements up to index 5 inclusive
-sparsevec.num_elem_at(5);
+sparsevec.get_at_rank(2, &mut elem);```
+* elem now obtains a reference to sparsevec rank 2 string
+Getting the total number of elements in the bitvector
+```sparsevec.num_elem();```
+Getting number of elements up to index 5 inclusive
+```sparsevec.num_elem_at(5);
+let mut elem= "".to_string();```
+Getting string representation of the Sparse Vec at index 3
+```sparsevec.get_at_index(3, &mut elem);```
+* elem now obtains a reference to sparsevec index 3 string
 
-let mut elem= "".to_string();
-//Getting string representation of the Sparse Vec at index 3
-sparsevec.get_at_index(3, &mut elem);
-// elem now obtains a reference to sparsevec index 3 string
+Saving Sparsevec to file
+```sparsevec.save("Sparsevec.out".to_string());```
+Loading Sparsevec from file
+```sparsevec.load("Sparsevec.out".to_string());```
 
-//Saving Sparsevec to file
-sparsevec.save("Sparsevec.out".to_string());
-//Loading Sparsevec from file
-sparsevec.load("Sparsevec.out".to_string());
+Getting the size of the sparse vector
+```sparsevec.size();```
 
-//Getting the size of the sparse vector
-sparsevec.size();
-```
 
 ## Sources:
 * bit-vec: https://crates.io/crates/bit-vec
