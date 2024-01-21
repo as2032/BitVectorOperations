@@ -1,4 +1,18 @@
 Alexander Straub 
+# Bit Vector Operations Library
+
+## Author: Alexander Straub
+
+### Requirements (in cargo.toml):
+```toml
+bincode = "1.2.1"
+bit-vec = { version = "0.6", features = ["serde"] }
+serde = { version = "1.0", features = ["derive"] }
+get-size = { version = "^0.1", features = ["derive"] }
+
+##Introduction
+This library provides operations for working with Bit Vectors, including Rank and Select operations. The command-line interface optionally accepts an input file name, which should be stored in the input_files/ directory. The input file must contain a sequence of 0's and 1's only. Example input can be found in input_files/inputexample
+
 
 
 Requirements (in cargo.toml):
@@ -18,7 +32,7 @@ This library consists of operations supporting Bit Vectors.
 
 1) Rankvec
 
-The Rankvec structure allows for constant time rank1 operations on the supplied bit vector. 
+The Rankvec structure allows for constant time rank1 operations on the supplied bit vector.
 
 Use:
 The code below assumes an already created Bit Vector (represented as bv here) of type BitVec from the bit-vec library. Interface for this structure is done in the main() function in main.rs
