@@ -1,4 +1,3 @@
-Alexander Straub 
 # Bit Vector Operations Library
 
 ## Author: Alexander Straub
@@ -109,11 +108,11 @@ sparsevec.size();
 ```
 
 ## Sources:
-bit-vec: https://crates.io/crates/bit-vec
-serde: https://serde.rs/derive.html
-get_size: https://crates.io/crates/get-size
-rand: https://crates.io/crates/rand
-bincode: https://docs.rs/bincode/latest/bincode/
+* bit-vec: https://crates.io/crates/bit-vec
+* serde: https://serde.rs/derive.html
+* get_size: https://crates.io/crates/get-size
+* rand: https://crates.io/crates/rand
+* bincode: https://docs.rs/bincode/latest/bincode/
 
 
 
