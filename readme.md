@@ -48,9 +48,13 @@ Getting memory overhead of Rank Data
 rankbitvec.overhead();
 ```
 Saving Rankvec structure to file 
-```rankbitvec.save("RankVec.out");```
+```
+rankbitvec.save("RankVec.out");
+```
 Loading Rankvec structure from file;
-```rankbitvec.load("RankVec.out");```
+```
+rankbitvec.load("RankVec.out");
+```
 
 
 ### Selectvec
@@ -65,6 +69,7 @@ Creating Selectvec Structure
 let mut selectbitvec =  Selectvec{
     rankvec : rankbitvec
 };
+
 ```
 Performing select1 operation
 ```
@@ -91,35 +96,55 @@ The Sparsevec structure allows for representation of strings using a BitVector. 
 
 
 Defining size of the sparse vector
-```let size = 10;```
+```
+let size = 10;
+```
 
 Creating an empty sparse vector 
-```let mut sparsevec = Sparsevec::create(size);```
-
+```
+let mut sparsevec = Sparsevec::create(size);
+```
 Adding elements to sparse vector at various positions
-```sparsevec.append("Rob".to_string(), 1);
+```
+sparsevec.append("Rob".to_string(), 1);
 sparsevec.append("Rob2".to_string(), 2);
-sparsevec.append("Rob3".to_string(), 3);```
+sparsevec.append("Rob3".to_string(), 3);
+```
 Finalizing the vector so that we can perform operations on it
-```sparsevec.finalize();```
+```
+sparsevec.finalize();
+```
 Performing various operations on the sparsevec
-```sparsevec.get_index_of(2);
+```
+sparsevec.get_index_of(2);
 let mut elem= "".to_string();
-sparsevec.get_at_rank(2, &mut elem);```
+sparsevec.get_at_rank(2, &mut elem);
+```
 * elem now obtains a reference to sparsevec rank 2 string
+
 Getting the total number of elements in the bitvector
-```sparsevec.num_elem();```
+```
+sparsevec.num_elem();
+```
 Getting number of elements up to index 5 inclusive
-```sparsevec.num_elem_at(5);
-let mut elem= "".to_string();```
+```
+sparsevec.num_elem_at(5);
+let mut elem= "".to_string();
+```
 Getting string representation of the Sparse Vec at index 3
-```sparsevec.get_at_index(3, &mut elem);```
+```
+sparsevec.get_at_index(3, &mut elem);
+```
 * elem now obtains a reference to sparsevec index 3 string
 
 Saving Sparsevec to file
-```sparsevec.save("Sparsevec.out".to_string());```
+```
+sparsevec.save("Sparsevec.out".to_string());
+```
 Loading Sparsevec from file
-```sparsevec.load("Sparsevec.out".to_string());```
+```
+sparsevec.load("Sparsevec.out".to_string());
+```
 
 Getting the size of the sparse vector
 ```sparsevec.size();```
